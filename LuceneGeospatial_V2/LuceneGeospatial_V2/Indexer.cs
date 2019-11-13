@@ -33,13 +33,13 @@ namespace LuceneGeospatial_V2
             var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_29);
             using (var writer = new IndexWriter(indexDirectory, analyzer, IndexWriter.MaxFieldLength.UNLIMITED))
             {
-                foreach (var venue in places)
+                foreach (var place in places)
                 {
-                    // Purge venues from Lucene if they already exist
-                    var query = new TermQuery(new Term("Id", venue.Id.ToString()));
+                    // Purge places from Lucene if they already exist
+                    var query = new TermQuery(new Term("Id", place.Id.ToString()));
                     writer.DeleteDocuments(query);
 
-                    IndexVenue(venue, writer);
+                    IndexPlace(place, writer);
                 }
 
                 writer.Optimize();
@@ -50,20 +50,20 @@ namespace LuceneGeospatial_V2
         }
        
 
-        private void IndexVenue(Place venue, IndexWriter writer)
+        private void IndexPlace(Place place, IndexWriter writer)
         {
             var doc = new Document();
-            doc.Add(new Field("Id", venue.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-            doc.Add(new Field("Name", venue.Name, Field.Store.YES, Field.Index.ANALYZED));
+            doc.Add(new Field("Id", place.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+            doc.Add(new Field("Name", place.Name, Field.Store.YES, Field.Index.ANALYZED));
             var scoreField = new NumericField("Rank", Field.Store.YES, true); //The sorted fields must be indexed
-            scoreField.SetIntValue(venue.Rank);
+            scoreField.SetIntValue(place.Rank);
             doc.Add(scoreField);
 
-            doc.Add(new Field("Latitude", NumericUtils.DoubleToPrefixCoded(venue.Latitude), Field.Store.YES, Field.Index.NOT_ANALYZED));
-            doc.Add(new Field("Longitude", NumericUtils.DoubleToPrefixCoded(venue.Longitude), Field.Store.YES, Field.Index.NOT_ANALYZED));
-            AddCartesianTiers(venue.Latitude, venue.Longitude, doc);
+            doc.Add(new Field("Latitude", NumericUtils.DoubleToPrefixCoded(place.Latitude), Field.Store.YES, Field.Index.NOT_ANALYZED));
+            doc.Add(new Field("Longitude", NumericUtils.DoubleToPrefixCoded(place.Longitude), Field.Store.YES, Field.Index.NOT_ANALYZED));
+            AddCartesianTiers(place.Latitude, place.Longitude, doc);
 
-            if (venue.Important) { doc.SetBoost(1.5f); }
+            if (place.Important) { doc.SetBoost(1.5f); }
             else { doc.SetBoost(0.1f); }
 
             writer.AddDocument(doc);

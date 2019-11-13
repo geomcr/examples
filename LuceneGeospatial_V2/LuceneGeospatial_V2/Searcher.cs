@@ -54,8 +54,8 @@ namespace LuceneGeospatial_V2
                 for (int i = 0; i < results; i++)
                 {
                     var scoreDoc = topFieldDocs.ScoreDocs[i];
-                    var venue = Convert(scoreDoc, searcher);
-                    items.Add(venue);
+                    var place = Convert(scoreDoc, searcher);
+                    items.Add(place);
                 }
 
                 searcher.Close();
@@ -91,10 +91,10 @@ namespace LuceneGeospatial_V2
                 for (int i = 0; i < results; i++)
                 {
                     var scoreDoc = topDocs.ScoreDocs[i];
-                    var venue = Convert(scoreDoc, searcher);
-                    items.Add(venue);
+                    var place = Convert(scoreDoc, searcher);
+                    items.Add(place);
                     var distanceInKM = distFilter.GetDistance(scoreDoc.doc) / KmsToMiles;
-                    items.Add(venue);
+                    items.Add(place);
                 }
             }
             return items;

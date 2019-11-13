@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Place_1",
+    "latitude": 51.507267,
+    "longitude": -0.16573,
+    "rank": 10,
+    "important": false
+  },
+  {
+    "id": 2,
+    "name": "Place_2",
+    "latitude": 51.507618,
+    "longitude": -0.141012,
+    "rank": 9,
+    "important": true
+  },
+  {
+    "id": 3,
+    "name": "Place_3",
+    "latitude": 51.50861,
+    "longitude": -0.13909,
+    "rank": 8,
+    "important": false
+  },
+  {
+    "id": 4,
+    "name": "Place_4",
+    "latitude": 51.499092,
+    "longitude": -0.162348,
+    "rank": 7,
+    "important": false
+  },
+  {
+    "id": 5,
+    "name": "Place_5",
+    "latitude": 51.51371,
+    "longitude": -0.135222,
+    "rank": 6,
+    "important": false
+  },
+  {
+    "id": 6,
+    "name": "Place_6",
+    "latitude": 51.50715,
+    "longitude": -0.145598,
+    "rank": 5,
+    "important": true
+  },
+  {
+    "id": 7,
+    "name": "Place_7",
+    "latitude": 51.507618,
+    "longitude": -0.141012,
+    "rank": 4,
+    "important": false
+  }
+]
