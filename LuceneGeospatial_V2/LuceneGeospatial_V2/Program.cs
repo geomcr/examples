@@ -33,7 +33,8 @@ namespace LuceneGeospatial_V2
                 Console.WriteLine("Searching for all places within 5KM of 51.5107493, -0.155577");
                 values = searcher.SearchByRadius(51.5107493, -0.155577, 5).ToList();
                 Console.WriteLine($" Result: { JsonConvert.SerializeObject(values.First())}");
-               
+
+                Console.WriteLine("Press any key to close");
             }
             catch (Exception ex)
             {
