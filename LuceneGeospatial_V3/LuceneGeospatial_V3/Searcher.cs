@@ -82,7 +82,7 @@ namespace LuceneGeospatial_V3
             return results;
         }
 
-        public IList<Place> SearchByRectangleAndName(string venueName, Point upperRight, Point lowerLeft)
+        public IList<Place> SearchByRectangleAndName(string placeName, Point upperRight, Point lowerLeft)
         {
             using (var searcher = new IndexSearcher(IndexDirectory, true))
             using (var analyser = new StandardAnalyzer(LuceneVersion))
@@ -90,7 +90,7 @@ namespace LuceneGeospatial_V3
 
                 var fields = new[] { "Name" };
                 var parser = new MultiFieldQueryParser(LuceneVersion, fields, analyser);
-                var query = parser.Parse(venueName);
+                var query = parser.Parse(placeName);
 
                 var searchArea = _spatialContext.MakeRectangle(lowerLeft, upperRight);
                 var args = new SpatialArgs(SpatialOperation.Intersects, searchArea);
@@ -104,7 +104,7 @@ namespace LuceneGeospatial_V3
         }
 
 
-        public IList<Place> SearchByCircle_ScoringByDistance(string venueName, double latitude, double longitude, double searchRadiusKm, int maxHits = 10)
+        public IList<Place> SearchByCircle_ScoringByDistance(string placeName, double latitude, double longitude, double searchRadiusKm, int maxHits = 10)
         {
             IList<Place> results;
 
@@ -116,7 +116,7 @@ namespace LuceneGeospatial_V3
 
                 var fields = new[] { "Name" };
                 var parser = new MultiFieldQueryParser(LuceneVersion, fields, analyser);
-                var query = parser.Parse(venueName);
+                var query = parser.Parse(placeName);
 
                 var spatialArgs = new SpatialArgs(SpatialOperation.Intersects, searchArea);
                 var spatialQuery = _strategy.MakeQuery(spatialArgs);
