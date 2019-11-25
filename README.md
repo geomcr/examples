@@ -17,3 +17,8 @@ This example uses Lucene.Net.Contrib.Spatial 3.0.3 and  is based on the followin
 - https://github.com/vitamink/lucene-net-examples
 - https://gist.github.com/Mark-Broadhurst/8931898
 - https://stackoverflow.com/questions/26323475/lucene-net-sorting-results-on-distance-from-a-point
+
+
+# ImageResize
+
+This example downloads, resizes, saves, and converts an image to a base64String to be able to use it directly in a rendered html.

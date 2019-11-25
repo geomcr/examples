@@ -1,6 +1,3 @@
-*/.vs/*
-*/bin/*
-LuceneGeospatial_V2/LuceneGeospatial_V2/bin/
-LuceneGeospatial_V2/LuceneGeospatial_V2/obj/
-LuceneGeospatial_V3/LuceneGeospatial_V3/bin/
-LuceneGeospatial_V3/LuceneGeospatial_V3/obj/
+.vs
+bin
+obj
