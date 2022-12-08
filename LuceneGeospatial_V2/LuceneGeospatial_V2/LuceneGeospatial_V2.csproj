@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Lucene.Net" Version="2.9.4.1" />
     <PackageReference Include="Lucene.Net.Contrib" Version="2.9.4.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
   </ItemGroup>
 
